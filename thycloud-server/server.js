@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const pe = require('parse-error');
 const cors = require('cors');
-const compression = require('compression')
+const compression = require('compression');
+const logger = require('./services/winston.service');
 
 const app = express()
 
@@ -57,6 +58,12 @@ module.exports = app;
 process.on('unhandledRejection', error => {
   console.error('Uncaught Error', pe(error));
 });
+
+// test logger
+
+logger.info('Testing info channel');
+logger.warn('Testing warn channel');
+logger.error('Testing error channel');
 
 app.listen(
     CONFIG.port, () => console.log('Server listening on port ' + CONFIG.port))

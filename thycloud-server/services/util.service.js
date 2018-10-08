@@ -1,5 +1,6 @@
 const {to} = require('await-to-js');
 const pe = require('parse-error');
+const logger = require('./winston.service');
 
 module.exports.to = async (promise) => {
   let err, res;
@@ -29,6 +30,7 @@ module.exports.TE =
     TE = function(err_message, log) {  // TE stands for Throw Error
       if (log === true) {
         console.error(err_message);
+        logger.error(err_message);
       }
       throw new Error(err_message);
     };
