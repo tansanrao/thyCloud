@@ -1,15 +1,62 @@
-<form (submit)="register()">
-  <div class="form-group">
-    <label for="name">Full name</label>
-    <input type="text" class="form-control" name="name" placeholder="Enter your name" [(ngModel)]="credentials.name">
+<!--
+  <form (submit)="register()">
+    <div class="form-group">
+      <label for="name">Full name</label>
+      <input type="text" class="form-control" name="name" placeholder="Enter your name" [(ngModel)]="credentials.name">
+    </div>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" name="email" placeholder="Enter email" [(ngModel)]="credentials.email">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="credentials.password">
+    </div>
+    <button type="submit" class="btn btn-default">Register!</button>
+  </form>
+-->
+<section class="signup">
+  <div class="container">
+    <div class="signup-content">
+      <div class="row">
+        <form (submit)="register()" class="example-form">
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="text"
+                class="form-control"
+                name="name"
+                placeholder="Enter your name"
+                [(ngModel)]="credentials.name"
+              />
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="email"
+                class="form-control form-input"
+                name="email"
+                placeholder="Enter email"
+                [(ngModel)]="credentials.email"
+            /></mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="password"
+                class="form-control form-input"
+                name="password"
+                placeholder="Password"
+                [(ngModel)]="credentials.password"
+            /></mat-form-field>
+          </div>
+          <button type="submit" class="btn btn-default">Register!</button>
+        </form>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="email">Email address</label>
-    <input type="email" class="form-control" name="email" placeholder="Enter email" [(ngModel)]="credentials.email">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="credentials.password">
-  </div>
-  <button type="submit" class="btn btn-default">Register!</button>
-</form>
+</section>

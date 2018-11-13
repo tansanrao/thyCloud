@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
   register() {
     this.auth.register(this.credentials).subscribe(
       () => {
-        this.router.navigateByUrl("/profile");
+        this.router.navigateByUrl("/home");
       },
       err => {
         console.error(err);
