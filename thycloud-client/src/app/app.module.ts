@@ -8,6 +8,9 @@ import { LoginComponent } from "./login/login.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { HomeComponent } from "./home/home.component";
 import { HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MaterialModule } from "./material/material.module";
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { HttpClientModule } from "@angular/common/http";
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

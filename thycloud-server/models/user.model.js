@@ -88,7 +88,12 @@ UserSchema.virtual('full_name')
 
 UserSchema.methods.getJWT = function() {
   let expiration_time = parseInt(CONFIG.jwt_expiration);
-  return 'Bearer ' + jwt.sign({user_id: this._id}, CONFIG.jwt_encryption, {
+  return jwt.sign({
+    user_id: this._id,
+    name: this.full_name,
+    email: this.email,
+    phone: this.phone
+  }, CONFIG.jwt_encryption, {
     expiresIn: expiration_time
   });
 };

@@ -35,7 +35,7 @@ export class AuthService {
     this.token = token;
   }
 
-  private getToken(): string {
+  public getToken(): string {
     if (!this.token) {
       this.token = localStorage.getItem("mean-token");
     }
@@ -45,7 +45,7 @@ export class AuthService {
   public logout(): void {
     this.token = "";
     window.localStorage.removeItem("mean-token");
-    this.router.navigateByUrl("/");
+    this.router.navigateByUrl("/login");
   }
 
   public getUserDetails(): UserDetails {
@@ -54,6 +54,7 @@ export class AuthService {
     if (token) {
       payload = token.split(".")[1];
       payload = window.atob(payload);
+
       return JSON.parse(payload);
     } else {
       return null;

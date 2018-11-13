@@ -1,8 +1,10 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<ul class="nav navbar-nav navbar-right">
-  <li *ngIf="!auth.isLoggedIn()"><a routerLink="/login">Sign in</a></li>
-  <li *ngIf="auth.isLoggedIn()"><a routerLink="/profile">{{ auth.getUserDetails()?.name }}</a></li>
-  <li *ngIf="auth.isLoggedIn()"><a (click)="auth.logout()">Logout</a></li>
-</ul>
+<mat-toolbar color="primary" role="heading">
+  <span class="app-title">thyCloud</span>
+  <span *ngIf="auth.isLoggedIn()"><a (click)="auth.logout()">Logout</a></span>
+</mat-toolbar>
 
-<router-outlet></router-outlet>
+<mat-drawer-container class="main-container">
+  <mat-drawer #drawer mode="side" opened> </mat-drawer>
+
+  <div class="sidenav-content"><router-outlet></router-outlet></div>
+</mat-drawer-container>

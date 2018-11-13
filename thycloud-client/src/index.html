@@ -1,14 +1,86 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>ThycloudClient</title>
-  <base href="/">
+  <head>
+    <meta charset="utf-8" />
+    <title>ThycloudClient</title>
+    <base href="/" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <app-root></app-root>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      function upload() {
+        [$("#selector")[0].files].forEach(fileObj => {
+          var file = fileObj[0];
+          // Retrieve a URL from our server.
+          retrieveNewURL(file, url => {
+            // Upload the file to the server.
+            uploadFile(file, url);
+          });
+        });
+      }
+
+      // Request to our Node.js server for an upload URL.
+      function retrieveNewURL(file, cb) {
+        $.ajaxSetup({
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader(
+              "Authorization",
+              "Bearer " + localStorage.getItem("mean-token")
+            );
+          }
+        });
+        $.get(
+          `http://localhost:3000/v1/getUploadUrl?name=${file.name}`,
+          url => {
+            cb(url);
+          }
+        );
+      }
+
+      // Use XMLHttpRequest to upload the file to S3.
+      function uploadFile(file, url) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("PUT", url, true);
+        xhr.send(file);
+        xhr.onload = () => {
+          if (xhr.status == 200) {
+            $("#status").text(`Uploaded ${file.name}.`);
+          }
+        };
+      }
+    </script>
+  </body>
 </html>
