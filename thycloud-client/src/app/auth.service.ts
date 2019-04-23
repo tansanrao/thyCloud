@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
+import {environment } from '../environments/environment';
 
 export interface UserDetails {
   _id: string;
@@ -78,11 +79,11 @@ export class AuthService {
     let base;
 
     if (method === "post" && type === "register") {
-      base = this.http.post(`http://localhost:3000/v1/users/`, user);
+      base = this.http.post(environment.apiUrl + `v1/users/`, user);
     } else if (method === "post" && type === "login") {
-      base = this.http.post(`http://localhost:3000/v1/users/login`, user);
+      base = this.http.post(environment.apiUrl + `v1/users/login`, user);
     } else {
-      base = this.http.get(`http://localhost:3000/v1/users/`, {
+      base = this.http.get(environment.apiUrl + `v1/users/`, {
         headers: { Authorization: `Bearer ${this.getToken()}` }
       });
     }

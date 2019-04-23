@@ -4,7 +4,7 @@ const { TE, to, ReE, ReS } = require("../services/util.service");
 
 var minioClient = new Minio.Client({
   endPoint: CONFIG.minio_endPoint,
-  port: 9000,
+  port: parseInt(CONFIG.minio_port, 10),
   useSSL: false,
   accessKey: CONFIG.minio_accessKey,
   secretKey: CONFIG.minio_secretKey
