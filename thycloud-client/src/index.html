@@ -63,7 +63,7 @@
           }
         });
         $.get(
-          `http://localhost:3000/v1/getUploadUrl?name=${file.name}`,
+          `http://server.tansanrao.com:3000/v1/getUploadUrl?name=${file.name}`,
           url => {
             cb(url);
           }
@@ -78,6 +78,7 @@
         xhr.onload = () => {
           if (xhr.status == 200) {
             $("#status").text(`Uploaded ${file.name}.`);
+            document.location.reload(true)
           }
         };
       }

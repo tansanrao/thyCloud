@@ -18,18 +18,18 @@
           </button></mat-cell
         >
       </ng-container>
-      <ng-container matColumnDef="etag">
-        <mat-header-cell *matHeaderCellDef> File ID </mat-header-cell>
-        <mat-cell *matCellDef="let files"> {{ files.etag }} </mat-cell>
-      </ng-container>
+<!--      <ng-container matColumnDef="etag">-->
+<!--        <mat-header-cell *matHeaderCellDef> File ID </mat-header-cell>-->
+<!--        <mat-cell *matCellDef="let files"> {{ files.etag }} </mat-cell>-->
+<!--      </ng-container>-->
       <ng-container matColumnDef="size">
         <mat-header-cell *matHeaderCellDef> Size </mat-header-cell>
         <mat-cell *matCellDef="let files"> {{ files.size }} </mat-cell>
       </ng-container>
-      <ng-container matColumnDef="lastModified">
-        <mat-header-cell *matHeaderCellDef> Last Modified </mat-header-cell>
-        <mat-cell *matCellDef="let files"> {{ files.lastModified }} </mat-cell>
-      </ng-container>
+<!--      <ng-container matColumnDef="lastModified">-->
+<!--        <mat-header-cell *matHeaderCellDef> Last Modified </mat-header-cell>-->
+<!--        <mat-cell *matCellDef="let files"> {{ files.lastModified }} </mat-cell>-->
+<!--      </ng-container>-->
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>

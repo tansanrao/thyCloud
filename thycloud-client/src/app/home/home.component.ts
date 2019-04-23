@@ -21,7 +21,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  displayedColumns: string[] = ['etag', 'name', 'size', 'lastModified'];
+  displayedColumns: string[] = ['name', 'size'];
   dataSource = new FileDataSource(this.http, this.auth);
   @ViewChild(MatPaginator)
   paginator: MatPaginator;
